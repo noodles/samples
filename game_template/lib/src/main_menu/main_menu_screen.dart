@@ -75,6 +75,11 @@ class MainMenuScreen extends StatelessWidget {
               child: const Text('Settings'),
             ),
             _gap,
+            ElevatedButton(
+              onPressed: () => throw Exception(),
+              child: const Text("Throw Test Exception"),
+            ),
+            _gap,
             Padding(
               padding: const EdgeInsets.only(top: 32),
               child: ValueListenableBuilder<bool>(

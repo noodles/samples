@@ -193,6 +193,8 @@ class AudioController {
     } else {
       // Music got turned off.
       _stopMusic();
+      _log.severe("Someone is messing with the music!");
+      throw Exception();
     }
   }
 
