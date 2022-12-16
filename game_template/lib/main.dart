@@ -3,10 +3,8 @@
 // BSD-style license that can be found in the LICENSE file.
 
 // Uncomment the following lines when enabling Firebase Crashlytics
-// import 'dart:io';
-// import 'package:firebase_core/firebase_core.dart';
-// import 'firebase_options.dart';
-
+//import 'dart:io';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +13,7 @@ import 'package:go_router/go_router.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 
+import 'firebase_options.dart';
 import 'src/ads/ads_controller.dart';
 import 'src/app_lifecycle/app_lifecycle.dart';
 import 'src/audio/audio_controller.dart';
@@ -45,15 +44,15 @@ Future<void> main() async {
 
   FirebaseCrashlytics? crashlytics;
   // if (!kIsWeb && (Platform.isIOS || Platform.isAndroid)) {
-  //   try {
-  //     WidgetsFlutterBinding.ensureInitialized();
-  //     await Firebase.initializeApp(
-  //       options: DefaultFirebaseOptions.currentPlatform,
-  //     );
-  //     crashlytics = FirebaseCrashlytics.instance;
-  //   } catch (e) {
-  //     debugPrint("Firebase couldn't be initialized: $e");
-  //   }
+    try {
+      WidgetsFlutterBinding.ensureInitialized();
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+      // crashlytics = FirebaseCrashlytics.instance;
+    } catch (e) {
+      debugPrint("Firebase couldn't be initialized: $e");
+    }
   // }
 
   await guardWithCrashlytics(
